@@ -1,0 +1,154 @@
+{
+  "_comment": [
+    "resume example v0.2(260327)",
+    "template_desc는 랜딩 카드와 템플릿 설명 표시에 사용됩니다.",
+    "meta.template 값은 template 디렉터리의 템플릿 id와 일치해야 합니다."
+  ],
+  "meta": {
+    "lang": "kr",
+    "template": "classic-column",
+    "template_desc": "단일 컬럼 이력서 템플릿"
+  },
+  "profile": {
+    "top": {
+      "name": "김도윤",
+      "position": "정보보안 엔지니어",
+      "location": "서울, 대한민국",
+      "photo": "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=500&q=80",
+      "introduction": "클라우드 보안 운영과 위협 탐지 자동화에 강점을 가진 정보보안 엔지니어입니다. 서비스 환경에서 바로 작동하는 보안 체계를 설계하고 운영해 왔습니다."
+    },
+    "Contact": {
+      "Email": "doyoon.kim.sec@example.com",
+      "Phone": "+82-10-1234-5678",
+      "Link": [
+        {
+          "show head": "링크"
+        },
+        {
+          "label": "LinkedIn",
+          "text": "doyoon-kim-security",
+          "img": "",
+          "url": "https://www.linkedin.com/in/doyoon-kim-security"
+        },
+        {
+          "label": "GitHub",
+          "text": "doyoon-sec",
+          "img": "",
+          "url": "https://github.com/doyoon-sec"
+        },
+        {
+          "label": "Portfolio",
+          "text": "refresh style portfolio",
+          "img": "",
+          "url": "https://refresh.cv/jh.ham"
+        }
+      ]
+    }
+  },
+  "sections": {
+    "Work Experience": [
+      {
+        "show head": "경력"
+      },
+      {
+        "company": "BlueShield Security Lab",
+        "location": "서울, 대한민국",
+        "position": "시니어 정보보안 엔지니어",
+        "period/date": "2022.03 - 현재",
+        "description": "- AWS 자산 보안 점검과 위협 탐지 규칙 운영을 총괄했습니다.\n- WAF, EDR, SIEM 로그를 통합해 대응 시간을 45% 단축했습니다.",
+        "img1": "https://logo.clearbit.com/amazon.com",
+        "img2": "https://logo.clearbit.com/okta.com"
+      },
+      {
+        "company": "FinGate Payments",
+        "location": "대전, 대한민국",
+        "position": "정보보안 엔지니어",
+        "period/date": "2019.07 - 2022.02",
+        "description": "- 전자결제 서비스의 취약점 진단과 모의훈련을 수행했습니다.\n- PCI DSS 대응 문서와 내부 보안 기준을 정비했습니다.",
+        "img1": "https://logo.clearbit.com/paypal.com"
+      }
+    ],
+    "Education": [
+      {
+        "show head": "학력"
+      },
+      {
+        "school,institution": "서울사이버보안고등학교",
+        "location": "서울, 대한민국",
+        "major/degree": "정보보안과",
+        "period/date": "2012 - 2015",
+        "description": "- 교내 사이버 방어 대회에서 우수한 성과를 냈습니다."
+      },
+      {
+        "school,institution": "한국디지털대학교",
+        "location": "대전, 대한민국",
+        "major/degree": "컴퓨터공학 / 정보보호 트랙",
+        "period/date": "2015 - 2019",
+        "description": "- 로그 기반 침입 탐지 시스템을 주제로 캡스톤 프로젝트를 수행했습니다.\n- 졸업 프로젝트 최우수상을 수상했습니다."
+      }
+    ],
+    "Skills": [
+      {
+        "show head": "기술"
+      },
+      {
+        "category": "보안 운영",
+        "description": "위협 탐지, SIEM 운영, 취약점 관리, 대응 자동화"
+      },
+      {
+        "category": "플랫폼",
+        "description": "AWS, GuardDuty, CloudTrail, WAF, EDR, SAST, DAST, GitHub Actions"
+      }
+    ],
+    "Projects": [
+      {
+        "show head": "프로젝트"
+      },
+      {
+        "name": "클라우드 위협 탐지 자동화",
+        "team/organization": "보안팀, BlueShield Security Lab",
+        "role": "설계 및 개발",
+        "period/date": "2024",
+        "description": "- CloudTrail, GuardDuty, VPC Flow Logs를 기반으로 탐지 룰셋을 구성했습니다.\n- Slack과 이메일 연동 알림 체계를 구축했습니다."
+      },
+      {
+        "name": "보안 SDLC 정착",
+        "team/organization": "보안 아키텍처 팀",
+        "role": "보안 아키텍트",
+        "period/date": "2023",
+        "description": "- SAST, DAST, SCA를 CI 파이프라인에 통합했습니다.\n- 개발 조직 전반에 보안 챔피언 프로그램을 운영했습니다."
+      }
+    ],
+    "Certifications": [
+      {
+        "show head": "자격"
+      },
+      {
+        "name": "CISSP",
+        "issuing location": "Global",
+        "issuing organization": "ISC2",
+        "period/date": "2023",
+        "description": "보안 아키텍처와 운영 전반에 대한 전문 역량을 검증한 자격입니다."
+      },
+      {
+        "name": "정보보안기사",
+        "issuing location": "대한민국",
+        "issuing organization": "한국산업인력공단",
+        "period/date": "2020",
+        "description": "보안 공학, 운영, 대응 체계를 종합적으로 다루는 국가 자격입니다."
+      }
+    ],
+    "Publications": [
+      {
+        "show head": "출판물"
+      },
+      {
+        "title": "실무 중심 클라우드 탐지 플레이북 설계",
+        "publisher": "사내 엔지니어링 블로그",
+        "Writer": "김도윤",
+        "period/date": "2024.11",
+        "description": "클라우드 운영 조직을 위한 탐지 플레이북 설계 경험을 정리한 글입니다."
+      }
+    ]
+  }
+}
