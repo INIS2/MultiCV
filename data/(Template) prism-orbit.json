@@ -1,0 +1,88 @@
+{
+  "_comment": [
+    "resume example v0.3(260327)",
+    "template_desc는 랜딩 카드와 템플릿 설명 표시에 사용됩니다.",
+    "meta.template 값은 template 디렉터리의 템플릿 id와 일치해야 합니다."
+  ],
+  "meta": {
+    "lang": "kr",
+    "template": "prism-orbit",
+    "template_desc": "차가운 프리즘 톤과 유리질 패널을 결합한 SF 감도의 하이엔드 레이아웃"
+  },
+  "profile": {
+    "top": {
+      "name": "윤하진",
+      "position": "AI Product Architect",
+      "location": "서울, 대한민국",
+      "photo": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=900&q=80",
+      "introduction": "AI 기능을 제품 경험으로 번역하는 아키텍트입니다. 모델 선택, 상호작용 설계, 운영 체계를 하나의 제품 스택으로 설계합니다."
+    },
+    "Contact": {
+      "Email": "hajin.yoon.ai@example.com",
+      "Phone": "+82-10-9191-5502",
+      "Link": [
+        { "show head": "링크" },
+        { "label": "GitHub", "text": "github.com/hajin-orbit", "img": "", "url": "https://github.com/hajin-orbit" },
+        { "label": "Docs", "text": "orbit-ai.dev", "img": "", "url": "https://example.com/orbit-ai" },
+        { "label": "Talks", "text": "speakerdeck.com/hajin", "img": "", "url": "https://speakerdeck.com/hajin" }
+      ]
+    }
+  },
+  "sections": {
+    "Work Experience": [
+      { "show head": "경력" },
+      {
+        "company": "Vector Foundry",
+        "location": "판교, 대한민국",
+        "position": "Principal AI Product Architect",
+        "period/date": "2023.05 - 현재",
+        "description": "- 사내 AI 워크스페이스 제품군의 모델 라우팅 구조를 설계했습니다.\n- 품질, 비용, 응답속도를 함께 관리하는 운영 프레임을 구축했습니다."
+      },
+      {
+        "company": "Signal Notebook",
+        "location": "서울, 대한민국",
+        "position": "Staff Product Engineer",
+        "period/date": "2020.03 - 2023.04",
+        "description": "- 대화형 문서 편집기와 지식 검색 기능을 제품화했습니다.\n- 프롬프트 실험 결과를 제품 설정 시스템으로 전환했습니다."
+      }
+    ],
+    "Projects": [
+      { "show head": "핵심 프로젝트" },
+      {
+        "name": "Multi-Agent Workspace",
+        "team/organization": "Vector Foundry",
+        "role": "Architecture / Product System",
+        "period/date": "2025",
+        "description": "- 역할 기반 에이전트 오케스트레이션 구조를 설계했습니다.\n- 사용자 컨텍스트와 비용 제약을 함께 고려하는 실행 계층을 정의했습니다."
+      },
+      {
+        "name": "Prompt Operations Console",
+        "team/organization": "Signal Notebook",
+        "role": "Lead Engineer",
+        "period/date": "2024",
+        "description": "- 프롬프트 버전 관리와 평가 데이터를 연결하는 콘솔을 만들었습니다.\n- 출시 이후 팀의 실험 속도를 크게 높였습니다."
+      }
+    ],
+    "Skills": [
+      { "show head": "스택" },
+      {
+        "category": "AI Product",
+        "description": "Prompt design, agent workflow, evaluation loop, retrieval UX, model routing"
+      },
+      {
+        "category": "Engineering",
+        "description": "TypeScript, Python, system design, observability, product platform"
+      }
+    ],
+    "Publications": [
+      { "show head": "발표" },
+      {
+        "title": "Designing Products That Collaborate With Models",
+        "publisher": "AI Builders Summit",
+        "Writer": "윤하진",
+        "period/date": "2025.09",
+        "description": "모델 품질과 사용자 경험을 동시에 설계하는 제품 관점을 정리한 발표입니다."
+      }
+    ]
+  }
+}

@@ -16,9 +16,24 @@ export async function loadResumeSource(fileName) {
 }
 
 export async function discoverResumeEntries() {
-  const candidates = buildResumeCandidates();
-  const entries = await Promise.all(candidates.map(loadCandidateEntry));
-  return entries.filter(Boolean);
+  const manifest = await loadDataManifest();
+  const fileNames = manifest.entries.map((entry) => entry.fileName);
+  const entries = await Promise.all(fileNames.map(loadCandidateEntry));
+  const loadedByFileName = new Map(entries.filter(Boolean).map((entry) => [entry.fileName, entry]));
+
+  return manifest.entries
+    .map((entry) => {
+      const loadedEntry = loadedByFileName.get(entry.fileName);
+      if (!loadedEntry) {
+        return null;
+      }
+
+      return {
+        ...loadedEntry,
+        manifest: entry,
+      };
+    })
+    .filter(Boolean);
 }
 
 export function parseResume(text, fileName) {
@@ -39,27 +54,6 @@ export function downloadText(fileName, text) {
   URL.revokeObjectURL(url);
 }
 
-function buildResumeCandidates() {
-  const files = [];
-  const templateNames = [
-    "classic-column",
-    "board-grid",
-    "sidebar-timeline",
-    "magazine-block",
-    "signal-stack",
-  ];
-
-  for (let index = 1; index <= 12; index += 1) {
-    files.push(`resume${index}.json`);
-  }
-
-  for (const templateName of templateNames) {
-    files.push(`(Template) ${templateName}.json`);
-  }
-
-  return [...new Set(files)];
-}
-
 async function loadCandidateEntry(fileName) {
   try {
     const response = await fetch(`./data/${encodeURIComponent(fileName)}`);
@@ -73,4 +67,18 @@ async function loadCandidateEntry(fileName) {
   } catch {
     return null;
   }
+}
+
+async function loadDataManifest() {
+  const response = await fetch("./data/manifest.json", { cache: "no-store" });
+  if (!response.ok) {
+    throw new Error("data/manifest.json 파일을 찾지 못했습니다. 배포 전에 manifest 생성 스크립트를 실행해 주세요.");
+  }
+
+  const manifest = await response.json();
+  if (!Array.isArray(manifest?.entries)) {
+    throw new Error("data/manifest.json 형식이 올바르지 않습니다.");
+  }
+
+  return manifest;
 }

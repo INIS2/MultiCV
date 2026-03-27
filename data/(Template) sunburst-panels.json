@@ -1,0 +1,88 @@
+{
+  "_comment": [
+    "resume example v0.3(260327)",
+    "template_desc는 랜딩 카드와 템플릿 설명 표시에 사용됩니다.",
+    "meta.template 값은 template 디렉터리의 템플릿 id와 일치해야 합니다."
+  ],
+  "meta": {
+    "lang": "kr",
+    "template": "sunburst-panels",
+    "template_desc": "따뜻한 오렌지-옐로우 스펙트럼과 카드 패널을 쓰는 에디토리얼 레이아웃"
+  },
+  "profile": {
+    "top": {
+      "name": "한지후",
+      "position": "브랜드 전략가 / 콘텐츠 디렉터",
+      "location": "제주, 대한민국",
+      "photo": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=900&q=80",
+      "introduction": "브랜드의 언어와 제품의 구조를 하나의 경험으로 엮는 콘텐츠 디렉터입니다. 전략 문서와 런칭 페이지 사이의 간극을 좁히는 일을 해왔습니다."
+    },
+    "Contact": {
+      "Email": "jihoo.han.brand@example.com",
+      "Phone": "+82-10-2788-3301",
+      "Link": [
+        { "show head": "링크" },
+        { "label": "Newsletter", "text": "sunletter.kr", "img": "", "url": "https://example.com/sunletter" },
+        { "label": "LinkedIn", "text": "linkedin.com/in/jihoo-han", "img": "", "url": "https://linkedin.com/in/jihoo-han" },
+        { "label": "Archive", "text": "jihoo-archive.com", "img": "", "url": "https://example.com/jihoo-archive" }
+      ]
+    }
+  },
+  "sections": {
+    "Work Experience": [
+      { "show head": "경력" },
+      {
+        "company": "Daybreak Company",
+        "location": "서울, 대한민국",
+        "position": "Brand Strategy Director",
+        "period/date": "2022.01 - 현재",
+        "description": "- 신규 브랜드 6개의 포지셔닝과 내러티브 아키텍처를 설계했습니다.\n- 마케팅, 제품, 세일즈 문서를 하나의 브랜드 프레임으로 통합했습니다."
+      },
+      {
+        "company": "House of Pages",
+        "location": "부산, 대한민국",
+        "position": "Content Lead",
+        "period/date": "2018.06 - 2021.12",
+        "description": "- 에디토리얼 커머스 콘텐츠와 브랜드 저널을 운영했습니다.\n- 롱폼 콘텐츠 기반 퍼널 실험을 통해 리드 전환 구조를 고도화했습니다."
+      }
+    ],
+    "Projects": [
+      { "show head": "선정 프로젝트" },
+      {
+        "name": "Seasonal Narrative Commerce",
+        "team/organization": "Daybreak Company",
+        "role": "Strategy / Editorial Lead",
+        "period/date": "2025",
+        "description": "- 시즌별 상품 서사를 에디토리얼 패널 구조로 재설계했습니다.\n- 브랜디드 콘텐츠와 상품 상세의 톤을 단일 시스템으로 정리했습니다."
+      },
+      {
+        "name": "Founder Voice Program",
+        "team/organization": "House of Pages",
+        "role": "Program Architect",
+        "period/date": "2023",
+        "description": "- 창업자 인터뷰 기반 브랜딩 프로그램을 기획했습니다.\n- 인터뷰에서 광고까지 이어지는 콘텐츠 파이프라인을 수립했습니다."
+      }
+    ],
+    "Skills": [
+      { "show head": "전문 분야" },
+      {
+        "category": "Strategy",
+        "description": "Brand narrative, positioning, campaign concept, editorial architecture"
+      },
+      {
+        "category": "Execution",
+        "description": "Content design, launch messaging, stakeholder workshop, tone system"
+      }
+    ],
+    "Certifications": [
+      { "show head": "기타 이력" },
+      {
+        "name": "Creative Leadership Intensive",
+        "issuing location": "Global",
+        "issuing organization": "School of Creative Direction",
+        "period/date": "2024",
+        "description": "브랜드와 크리에이티브 리더십 운영 역량을 다룬 프로그램입니다."
+      }
+    ]
+  }
+}

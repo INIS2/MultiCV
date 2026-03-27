@@ -148,6 +148,17 @@ MultiCV/
 - 정보 모달
 - 정적 배포 환경 대응
 
+## 매니페스트 생성
+
+랜딩 페이지는 `data/manifest.json`을 기준으로 목록을 읽습니다.
+`data/` 또는 `template/` 아래 파일을 추가/삭제한 뒤에는 아래 명령으로 매니페스트를 다시 생성해야 합니다.
+
+```bash
+npm run generate:manifest
+```
+
+생성 스크립트는 [data/generate-manifest.mjs](/C:/DEV/MultiCV/data/generate-manifest.mjs)에 있습니다.
+
 ## 템플릿 설계 원칙
 
 현재 템플릿은 가능한 한 self-contained 구조를 따릅니다.

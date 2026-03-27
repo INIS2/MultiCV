@@ -219,7 +219,7 @@ select {
 }
 
 .hero {
-  padding: var(--page-top-gap) 0 var(--page-bottom-gap);
+  padding: 14px 0 40px;
 }
 
 .hero-panel,
@@ -234,7 +234,7 @@ select {
 }
 
 .hero-panel {
-  padding: 36px;
+  padding: 28px 32px;
   overflow: hidden;
   position: relative;
 }
@@ -501,6 +501,7 @@ select {
 
 .template-portrait-meta {
   display: grid;
+  grid-template-rows: auto 60px;
   gap: 0;
   text-align: center;
   justify-items: center;
@@ -509,8 +510,9 @@ select {
 .template-meta-card {
   width: 100%;
   display: grid;
+  align-content: start;
   gap: 4px;
-  padding: 10px 12px;
+  padding: 8px 12px;
   border: 1px solid var(--line);
   border-radius: 14px 14px 0 0;
   background: rgba(255, 253, 248, 0.92);
@@ -518,13 +520,15 @@ select {
 
 .template-meta-card-secondary {
   margin-top: -1px;
-  padding: 8px 12px;
+  padding: 12px 12px;
   border-radius: 0 0 14px 14px;
 }
 
 .template-meta-card-single {
   margin-top: 0;
   border-radius: 14px;
+  min-height: 60px;
+  align-content: center;
 }
 
 .template-portrait-meta strong {
@@ -541,6 +545,10 @@ select {
   color: var(--muted);
   font-size: 0.9rem;
   line-height: 1.45;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .resume-page {

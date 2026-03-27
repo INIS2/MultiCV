@@ -4,10 +4,10 @@ import { createInfoModal, iconImage } from "../ui.js";
 export async function renderLanding(app, renderTopbar, entries) {
   const sourceEntries = Array.isArray(entries) ? entries : [];
   const templateCards = sourceEntries
-    .filter((item) => item.fileName.toLowerCase().includes("template"))
+    .filter((item) => item.manifest?.kind === "template")
     .map(createTemplateCardData);
   const dataFiles = sourceEntries
-    .filter((item) => !item.fileName.toLowerCase().includes("template"))
+    .filter((item) => item.manifest?.kind !== "template")
     .map((item) => item.fileName);
 
   const templateMarkup = templateCards.map((item) => `
@@ -91,7 +91,7 @@ export async function renderLanding(app, renderTopbar, entries) {
                 <div class="marquee-segment" data-marquee-segment="template-clone" aria-hidden="true"></div>
               </div>
             </div>
-          ` : `<div class="path-card"><p class="muted">template가 파일명에 포함된 데이터가 없습니다.</p></div>`}
+          ` : `<div class="path-card"><p class="muted">등록된 템플릿 샘플 데이터가 없습니다.</p></div>`}
 
           <h3 style="margin-top: 24px;">Data</h3>
           ${dataFiles.length ? `
@@ -103,7 +103,7 @@ export async function renderLanding(app, renderTopbar, entries) {
                 <div class="marquee-segment" data-marquee-segment="data-clone" aria-hidden="true"></div>
               </div>
             </div>
-          ` : `<div class="path-card"><p class="muted">template가 파일명에 없는 데이터가 없습니다.</p></div>`}
+          ` : `<div class="path-card"><p class="muted">등록된 일반 데이터가 없습니다.</p></div>`}
         </section>
       </section>
     </main>
@@ -188,12 +188,13 @@ function initInteractiveMarquee(root, segmentName, speed) {
   let frameId = 0;
   let lastTime = 0;
   let hovering = false;
+  let pointerDown = false;
   let dragging = false;
   let pointerId = null;
   let dragStartX = 0;
   let dragStartOffset = 0;
-  let dragDistance = 0;
   let suppressClick = false;
+  const dragThreshold = 8;
 
   const getLoopWidth = () => primary.getBoundingClientRect().width;
 
@@ -231,12 +232,14 @@ function initInteractiveMarquee(root, segmentName, speed) {
   };
 
   const stopDrag = () => {
-    if (!dragging) {
+    if (!pointerDown && !dragging) {
       return;
     }
+
+    pointerDown = false;
     dragging = false;
     rail.classList.remove("is-dragging");
-    if (pointerId !== null) {
+    if (pointerId !== null && rail.hasPointerCapture(pointerId)) {
       rail.releasePointerCapture(pointerId);
     }
     pointerId = null;
@@ -260,34 +263,52 @@ function initInteractiveMarquee(root, segmentName, speed) {
     if (event.pointerType === "mouse" && event.button !== 0) {
       return;
     }
-    event.preventDefault();
-    dragging = true;
+
+    pointerDown = true;
+    dragging = false;
     hovering = true;
     pointerId = event.pointerId;
     dragStartX = event.clientX;
     dragStartOffset = offset;
-    dragDistance = 0;
     suppressClick = false;
-    rail.classList.add("is-dragging");
-    rail.setPointerCapture(pointerId);
   });
 
   rail.addEventListener("pointermove", (event) => {
-    if (!dragging) {
+    if (!pointerDown || pointerId !== event.pointerId) {
       return;
     }
+
     const deltaX = event.clientX - dragStartX;
-    dragDistance = Math.max(dragDistance, Math.abs(deltaX));
+    const dragDistance = Math.abs(deltaX);
+
+    if (!dragging && dragDistance <= dragThreshold) {
+      return;
+    }
+
+    if (!dragging) {
+      dragging = true;
+      suppressClick = true;
+      rail.classList.add("is-dragging");
+      rail.setPointerCapture(pointerId);
+    }
+
+    event.preventDefault();
     offset = dragStartOffset - deltaX;
-    suppressClick = dragDistance > 8;
     render();
   });
 
-  rail.addEventListener("pointerup", () => {
+  rail.addEventListener("pointerup", (event) => {
+    if (pointerId !== event.pointerId) {
+      return;
+    }
     stopDrag();
   });
 
-  rail.addEventListener("pointercancel", () => {
+  rail.addEventListener("pointercancel", (event) => {
+    if (pointerId !== event.pointerId) {
+      return;
+    }
+    suppressClick = false;
     stopDrag();
   });
 

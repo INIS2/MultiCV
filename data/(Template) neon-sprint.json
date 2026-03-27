@@ -1,0 +1,88 @@
+{
+  "_comment": [
+    "resume example v0.3(260327)",
+    "template_desc는 랜딩 카드와 템플릿 설명 표시에 사용됩니다.",
+    "meta.template 값은 template 디렉터리의 템플릿 id와 일치해야 합니다."
+  ],
+  "meta": {
+    "lang": "kr",
+    "template": "neon-sprint",
+    "template_desc": "네온 그라데이션과 글래스 패널을 사용하는 역동적인 미래형 레이아웃"
+  },
+  "profile": {
+    "top": {
+      "name": "최서윤",
+      "position": "인터랙션 디자이너 / 프론트엔드 디렉터",
+      "location": "부산, 대한민국",
+      "photo": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=900&q=80",
+      "introduction": "브랜드 경험을 화면 위의 리듬으로 번역하는 인터랙션 디자이너입니다. 실험적인 무드와 생산 가능한 시스템을 동시에 설계합니다."
+    },
+    "Contact": {
+      "Email": "seoyoon.choi.design@example.com",
+      "Phone": "+82-10-4321-8899",
+      "Link": [
+        { "show head": "링크" },
+        { "label": "Portfolio", "text": "seoyoon-lab.com", "img": "", "url": "https://example.com/seoyoon-lab" },
+        { "label": "Behance", "text": "behance.net/seoyoonlab", "img": "", "url": "https://www.behance.net/seoyoonlab" },
+        { "label": "GitHub", "text": "github.com/seoyoonlab", "img": "", "url": "https://github.com/seoyoonlab" }
+      ]
+    }
+  },
+  "sections": {
+    "Work Experience": [
+      { "show head": "경력" },
+      {
+        "company": "Pulse Motion Studio",
+        "location": "서울, 대한민국",
+        "position": "Lead Interaction Designer",
+        "period/date": "2023.02 - 현재",
+        "description": "- 대형 브랜드 캠페인 사이트 9종의 인터랙션 시스템을 설계했습니다.\n- 모션 토큰과 컴포넌트 패턴을 정리해 제작 기간을 30% 단축했습니다."
+      },
+      {
+        "company": "Orbit Commerce",
+        "location": "판교, 대한민국",
+        "position": "Senior Product Designer",
+        "period/date": "2020.04 - 2023.01",
+        "description": "- 모바일 커머스의 전환 플로우를 리디자인했습니다.\n- 프론트엔드 팀과 함께 디자인 QA 및 모션 가이드를 운영했습니다."
+      }
+    ],
+    "Projects": [
+      { "show head": "프로젝트" },
+      {
+        "name": "Neon Run Campaign",
+        "team/organization": "Pulse Motion Studio",
+        "role": "Concept / Interaction System",
+        "period/date": "2025",
+        "description": "- 브라우저 기반 파티클 스테이지와 반응형 모션 시스템을 설계했습니다.\n- 영상 중심 캠페인을 웹 전용 경험으로 재구성했습니다."
+      },
+      {
+        "name": "Glass Commerce UI",
+        "team/organization": "Orbit Commerce",
+        "role": "Design Lead",
+        "period/date": "2024",
+        "description": "- 카드 단위 구매 흐름과 상품 비교 보드를 설계했습니다.\n- 색과 깊이 체계를 다시 정의해 제품 톤을 일관화했습니다."
+      }
+    ],
+    "Skills": [
+      { "show head": "핵심 역량" },
+      {
+        "category": "Design",
+        "description": "Interaction design, art direction, motion system, responsive editorial layout"
+      },
+      {
+        "category": "Build",
+        "description": "HTML, CSS, JavaScript, Framer, GSAP, design token system"
+      }
+    ],
+    "Publications": [
+      { "show head": "발표 및 기록" },
+      {
+        "title": "Elastic Motion for Brand Interfaces",
+        "publisher": "Design Forward Seoul",
+        "Writer": "최서윤",
+        "period/date": "2025.10",
+        "description": "브랜드 인터랙션을 시스템으로 환원하는 방법을 발표한 세션입니다."
+      }
+    ]
+  }
+}

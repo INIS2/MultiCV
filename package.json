@@ -1,0 +1,8 @@
+{
+  "name": "multicv",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "generate:manifest": "node ./data/generate-manifest.mjs"
+  }
+}

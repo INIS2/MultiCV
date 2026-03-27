@@ -1,0 +1,109 @@
+{
+  "generatedAt": "2026-03-27T13:06:43.855Z",
+  "entries": [
+    {
+      "fileName": "(Template) board-grid.json",
+      "kind": "template",
+      "templateId": "board-grid",
+      "templateDescription": "짙은 헤더와 카드 그리드를 사용하는 보드형 레이아웃",
+      "title": "김도윤",
+      "templateExists": true
+    },
+    {
+      "fileName": "(Template) classic-column.json",
+      "kind": "template",
+      "templateId": "classic-column",
+      "templateDescription": "단일 컬럼 이력서 템플릿",
+      "title": "김도윤",
+      "templateExists": true
+    },
+    {
+      "fileName": "(Template) magazine-block.json",
+      "kind": "template",
+      "templateId": "magazine-block",
+      "templateDescription": "강한 색 대비와 블록 섹션을 사용하는 매거진형 레이아웃",
+      "title": "김도윤",
+      "templateExists": true
+    },
+    {
+      "fileName": "(Template) neon-sprint.json",
+      "kind": "template",
+      "templateId": "neon-sprint",
+      "templateDescription": "네온 그라데이션과 글래스 패널을 사용하는 역동적인 미래형 레이아웃",
+      "title": "최서윤",
+      "templateExists": true
+    },
+    {
+      "fileName": "(Template) prism-orbit.json",
+      "kind": "template",
+      "templateId": "prism-orbit",
+      "templateDescription": "차가운 프리즘 톤과 유리질 패널을 결합한 SF 감도의 하이엔드 레이아웃",
+      "title": "윤하진",
+      "templateExists": true
+    },
+    {
+      "fileName": "(Template) sidebar-timeline.json",
+      "kind": "template",
+      "templateId": "sidebar-timeline",
+      "templateDescription": "좌측 프로필 패널과 우측 타임라인을 결합한 편집형 레이아웃",
+      "title": "김도윤",
+      "templateExists": true
+    },
+    {
+      "fileName": "(Template) signal-stack.json",
+      "kind": "template",
+      "templateId": "signal-stack",
+      "templateDescription": "짙은 시그널 헤더와 번호형 섹션 흐름을 사용하는 스택 레이아웃",
+      "title": "김도윤",
+      "templateExists": true
+    },
+    {
+      "fileName": "(Template) sunburst-panels.json",
+      "kind": "template",
+      "templateId": "sunburst-panels",
+      "templateDescription": "따뜻한 오렌지-옐로우 스펙트럼과 카드 패널을 쓰는 에디토리얼 레이아웃",
+      "title": "한지후",
+      "templateExists": true
+    },
+    {
+      "fileName": "resume1.json",
+      "kind": "resume",
+      "templateId": "classic-column",
+      "templateDescription": "단일 컬럼 이력서 템플릿",
+      "title": "김도윤",
+      "templateExists": true
+    },
+    {
+      "fileName": "resume2.json",
+      "kind": "resume",
+      "templateId": "board-grid",
+      "templateDescription": "짙은 헤더와 카드 그리드를 사용하는 보드형 레이아웃",
+      "title": "김도윤",
+      "templateExists": true
+    },
+    {
+      "fileName": "resume3.json",
+      "kind": "resume",
+      "templateId": "sidebar-timeline",
+      "templateDescription": "좌측 프로필 패널과 우측 타임라인을 결합한 편집형 레이아웃",
+      "title": "김도윤",
+      "templateExists": true
+    },
+    {
+      "fileName": "resume4.json",
+      "kind": "resume",
+      "templateId": "magazine-block",
+      "templateDescription": "강한 색 대비와 블록 섹션을 사용하는 매거진형 레이아웃",
+      "title": "김도윤",
+      "templateExists": true
+    },
+    {
+      "fileName": "resume5.json",
+      "kind": "resume",
+      "templateId": "signal-stack",
+      "templateDescription": "짙은 시그널 헤더와 번호형 섹션 흐름을 사용하는 스택 레이아웃",
+      "title": "김도윤",
+      "templateExists": true
+    }
+  ]
+}
