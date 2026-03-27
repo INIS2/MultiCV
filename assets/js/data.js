@@ -46,6 +46,7 @@ function buildResumeCandidates() {
     "board-grid",
     "sidebar-timeline",
     "magazine-block",
+    "signal-stack",
   ];
 
   for (let index = 1; index <= 12; index += 1) {

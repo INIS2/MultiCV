@@ -10,6 +10,50 @@ export async function renderLanding(app, renderTopbar, entries) {
     .filter((item) => !item.fileName.toLowerCase().includes("template"))
     .map((item) => item.fileName);
 
+  const templateMarkup = templateCards.map((item) => `
+    <article class="template-portrait">
+      <a class="template-portrait-link" href="./index.html?resume=${encodeURIComponent(item.file)}" aria-label="${item.file}">
+        <div class="template-portrait-preview">
+          <div class="template-portrait-canvas" data-preview-id="${encodeURIComponent(item.file)}"></div>
+        </div>
+        <div class="template-portrait-meta">
+          <div class="template-meta-card">
+            <strong>${item.templateId}</strong>
+            ${item.description ? `<p>${item.description}</p>` : ""}
+          </div>
+          <div class="template-meta-card template-meta-card-secondary">
+            <span>${item.file}</span>
+          </div>
+        </div>
+      </a>
+    </article>
+  `).join("");
+
+  const dataMarkup = dataFiles.map((name) => `
+    <article class="template-portrait data-portrait">
+      <a class="template-portrait-link" href="./index.html?resume=${encodeURIComponent(name)}" aria-label="${name}">
+        <div class="template-portrait-preview data-portrait-preview">
+          <div class="data-preview-mock">
+            <div class="data-preview-bar data-preview-bar-short"></div>
+            <div class="data-preview-bar"></div>
+            <div class="data-preview-bar data-preview-bar-mid"></div>
+            <div class="data-preview-grid">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+        </div>
+        <div class="template-portrait-meta">
+          <div class="template-meta-card template-meta-card-secondary template-meta-card-single">
+            <span>${name}</span>
+          </div>
+        </div>
+      </a>
+    </article>
+  `).join("");
+
   const infoModal = createInfoModal();
 
   app.innerHTML = `
@@ -39,67 +83,38 @@ export async function renderLanding(app, renderTopbar, entries) {
         <section class="panel landing-full">
           <h3>Template</h3>
           ${templateCards.length ? `
-            <div class="template-rail">
-              ${templateCards.map((item) => `
-                <article class="template-portrait">
-                  <a class="template-portrait-link" href="./index.html?resume=${encodeURIComponent(item.file)}" aria-label="${item.file}">
-                    <div class="template-portrait-preview">
-                      <div class="template-portrait-canvas" data-preview-id="${encodeURIComponent(item.file)}"></div>
-                    </div>
-                    <div class="template-portrait-meta">
-                      <div class="template-meta-card">
-                        <strong>${item.templateId}</strong>
-                        ${item.description ? `<p>${item.description}</p>` : ""}
-                      </div>
-                      <div class="template-meta-card template-meta-card-secondary">
-                        <span>${item.file}</span>
-                      </div>
-                    </div>
-                  </a>
-                </article>
-              `).join("")}
+            <div class="template-rail marquee-rail">
+              <div class="marquee-track">
+                <div class="marquee-segment" data-marquee-segment="template-primary">
+                  ${templateMarkup}
+                </div>
+                <div class="marquee-segment" data-marquee-segment="template-clone" aria-hidden="true"></div>
+              </div>
             </div>
           ` : `<div class="path-card"><p class="muted">template가 파일명에 포함된 데이터가 없습니다.</p></div>`}
 
           <h3 style="margin-top: 24px;">Data</h3>
           ${dataFiles.length ? `
-            <div class="template-rail data-rail">
-              ${dataFiles.map((name) => `
-                <article class="template-portrait data-portrait">
-                  <a class="template-portrait-link" href="./index.html?resume=${encodeURIComponent(name)}" aria-label="${name}">
-                    <div class="template-portrait-preview data-portrait-preview">
-                      <div class="data-preview-mock">
-                        <div class="data-preview-bar data-preview-bar-short"></div>
-                        <div class="data-preview-bar"></div>
-                        <div class="data-preview-bar data-preview-bar-mid"></div>
-                        <div class="data-preview-grid">
-                          <span></span>
-                          <span></span>
-                          <span></span>
-                          <span></span>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="template-portrait-meta">
-                      <div class="template-meta-card template-meta-card-secondary template-meta-card-single">
-                        <span>${name}</span>
-                      </div>
-                    </div>
-                  </a>
-                </article>
-              `).join("")}
+            <div class="template-rail data-rail marquee-rail">
+              <div class="marquee-track marquee-track-slow">
+                <div class="marquee-segment" data-marquee-segment="data-primary">
+                  ${dataMarkup}
+                </div>
+                <div class="marquee-segment" data-marquee-segment="data-clone" aria-hidden="true"></div>
+              </div>
             </div>
           ` : `<div class="path-card"><p class="muted">template가 파일명에 없는 데이터가 없습니다.</p></div>`}
         </section>
       </section>
     </main>
   `;
+
   app.append(infoModal);
 
   const openInfoButton = app.querySelector("[data-action='open-info']");
   const closeInfoButtons = app.querySelectorAll("[data-action='close-info']");
 
-  openInfoButton.addEventListener("click", () => {
+  openInfoButton?.addEventListener("click", () => {
     infoModal.hidden = false;
     infoModal.setAttribute("aria-hidden", "false");
   });
@@ -132,6 +147,11 @@ export async function renderLanding(app, renderTopbar, entries) {
       previewRoot.innerHTML = `<div class="template-preview-empty">Preview unavailable</div>`;
     }
   }));
+
+  cloneMarqueeSegment(app, "template-primary", "template-clone");
+  cloneMarqueeSegment(app, "data-primary", "data-clone");
+  initInteractiveMarquee(app, "template", 0.02);
+  initInteractiveMarquee(app, "data", 0.05);
 }
 
 function createTemplateCardData(entry) {
@@ -144,6 +164,154 @@ function createTemplateCardData(entry) {
     description: data?.meta?.template_desc || "",
     data,
   };
+}
+
+function cloneMarqueeSegment(root, sourceId, targetId) {
+  const source = root.querySelector(`[data-marquee-segment="${sourceId}"]`);
+  const target = root.querySelector(`[data-marquee-segment="${targetId}"]`);
+  if (!source || !target) {
+    return;
+  }
+
+  target.replaceChildren(...Array.from(source.children).map((node) => node.cloneNode(true)));
+}
+
+function initInteractiveMarquee(root, segmentName, speed) {
+  const rail = root.querySelector(`[data-marquee-segment="${segmentName}-primary"]`)?.closest(".marquee-rail");
+  const track = rail?.querySelector(".marquee-track");
+  const primary = rail?.querySelector(`[data-marquee-segment="${segmentName}-primary"]`);
+  if (!rail || !track || !primary) {
+    return;
+  }
+
+  let offset = 0;
+  let frameId = 0;
+  let lastTime = 0;
+  let hovering = false;
+  let dragging = false;
+  let pointerId = null;
+  let dragStartX = 0;
+  let dragStartOffset = 0;
+  let dragDistance = 0;
+  let suppressClick = false;
+
+  const getLoopWidth = () => primary.getBoundingClientRect().width;
+
+  const normalizeOffset = () => {
+    const loopWidth = getLoopWidth();
+    if (!loopWidth) {
+      return;
+    }
+    while (offset >= loopWidth) {
+      offset -= loopWidth;
+    }
+    while (offset < 0) {
+      offset += loopWidth;
+    }
+  };
+
+  const render = () => {
+    normalizeOffset();
+    track.style.transform = `translate3d(${-offset}px, 0, 0)`;
+  };
+
+  const tick = (time) => {
+    if (!lastTime) {
+      lastTime = time;
+    }
+    const delta = time - lastTime;
+    lastTime = time;
+
+    if (!hovering && !dragging) {
+      offset += speed * delta;
+      render();
+    }
+
+    frameId = window.requestAnimationFrame(tick);
+  };
+
+  const stopDrag = () => {
+    if (!dragging) {
+      return;
+    }
+    dragging = false;
+    rail.classList.remove("is-dragging");
+    if (pointerId !== null) {
+      rail.releasePointerCapture(pointerId);
+    }
+    pointerId = null;
+    hovering = rail.matches(":hover");
+    window.setTimeout(() => {
+      suppressClick = false;
+    }, 0);
+  };
+
+  rail.addEventListener("mouseenter", () => {
+    hovering = true;
+  });
+
+  rail.addEventListener("mouseleave", () => {
+    if (!dragging) {
+      hovering = false;
+    }
+  });
+
+  rail.addEventListener("pointerdown", (event) => {
+    if (event.pointerType === "mouse" && event.button !== 0) {
+      return;
+    }
+    event.preventDefault();
+    dragging = true;
+    hovering = true;
+    pointerId = event.pointerId;
+    dragStartX = event.clientX;
+    dragStartOffset = offset;
+    dragDistance = 0;
+    suppressClick = false;
+    rail.classList.add("is-dragging");
+    rail.setPointerCapture(pointerId);
+  });
+
+  rail.addEventListener("pointermove", (event) => {
+    if (!dragging) {
+      return;
+    }
+    const deltaX = event.clientX - dragStartX;
+    dragDistance = Math.max(dragDistance, Math.abs(deltaX));
+    offset = dragStartOffset - deltaX;
+    suppressClick = dragDistance > 8;
+    render();
+  });
+
+  rail.addEventListener("pointerup", () => {
+    stopDrag();
+  });
+
+  rail.addEventListener("pointercancel", () => {
+    stopDrag();
+  });
+
+  rail.addEventListener("click", (event) => {
+    if (!suppressClick) {
+      return;
+    }
+    event.preventDefault();
+    event.stopPropagation();
+  }, true);
+
+  rail.addEventListener("dragstart", (event) => {
+    event.preventDefault();
+  });
+
+  window.addEventListener("resize", render);
+  render();
+  frameId = window.requestAnimationFrame(tick);
+
+  rail.addEventListener("remove", () => {
+    if (frameId) {
+      window.cancelAnimationFrame(frameId);
+    }
+  });
 }
 
 function cssEscapeValue(value) {
